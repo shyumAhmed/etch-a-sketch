@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.sketch-box {
+  display: flex;
+  border: 15px solid rgb(231, 127, 127);
+  height: 350px;
+  width: 350px;
+  margin-right: 40px;
+}
+
+.grid-row {
+  display: grid;
+  width: 100%;
+  justify-content: stretch;
+}
+.cell {
+  border: 1px solid gray;
+  background-color: antiquewhite;
+}
