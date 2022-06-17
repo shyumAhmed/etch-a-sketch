@@ -1,9 +1,11 @@
 const sketchBox = document.querySelector(".sketch-box");
 const clearButton = document.querySelector(".clear");
 const toggleGridButton = document.querySelector(".toggle-lines");
+const slider = document.getElementById("myRange");
+const output = document.getElementById("value-num");
 let gridValue;
 
-function createGrid(numOfRows, numOfCells) {
+function createDefaultGrid(numOfRows, numOfCells) {
   console.log("being called");
   for (r = 0; r < numOfRows; r++) {
     let row = document.createElement("div");
@@ -15,7 +17,7 @@ function createGrid(numOfRows, numOfCells) {
   }
 }
 
-function draw() {
+function drawOnGrid() {
   const cells = document.querySelectorAll(".cell");
   let drag = false;
   cells.forEach((cell) => {
@@ -43,15 +45,7 @@ function clearBoard() {
   });
 }
 
-function chooseGridValue() {
-  const slider = document.getElementById("myRange");
-  const output = document.getElementById("value-num");
-  output.innerHTML = slider.value + " X " + slider.value;
-  createGrid(slider.value, slider.value);
-  draw();
-  clearBoard();
-  toggleGridLines();
-
+function updateGridCellNum() {
   slider.oninput = () => {
     output.innerHTML = slider.value + " X " + slider.value;
     const cells = document.querySelectorAll(".cell");
@@ -63,11 +57,20 @@ function chooseGridValue() {
       cell.remove();
     });
 
-    createGrid(slider.value, slider.value);
-    draw();
+    createDefaultGrid(slider.value, slider.value);
+    drawOnGrid();
     clearBoard();
     toggleGridLines();
   };
+}
+
+function createGrid() {
+  output.innerHTML = slider.value + " X " + slider.value;
+  createDefaultGrid(slider.value, slider.value);
+  drawOnGrid();
+  clearBoard();
+  toggleGridLines();
+  updateGridCellNum();
 }
 
 function toggleGridLines() {
@@ -88,4 +91,4 @@ function toggleGridLines() {
   });
 }
 
-chooseGridValue();
+createGrid();
