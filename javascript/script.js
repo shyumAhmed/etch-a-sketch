@@ -1,7 +1,9 @@
 const sketchBox = document.querySelector(".sketch-box");
 const clearButton = document.querySelector(".clear");
+let gridValue;
 
 function createGrid(numOfRows, numOfCells) {
+  console.log("being called");
   for (r = 0; r < numOfRows; r++) {
     let row = document.createElement("div");
     sketchBox.appendChild(row).className = "grid-row";
@@ -40,6 +42,18 @@ function clearBoard() {
   });
 }
 
-createGrid(50, 50);
+function chooseGridValue() {
+  const slider = document.getElementById("myRange");
+  const output = document.getElementById("value-num");
+  output.innerHTML = slider.value + " X " + slider.value;
+  createGrid(slider.value, slider.value);
+  slider.oninput = function () {
+    output.innerHTML = slider.value + " X " + slider.value;
+    createGrid(slider.value, slider.value);
+  };
+}
+
+chooseGridValue();
+//createGrid(x, x);
 draw();
 clearBoard();
