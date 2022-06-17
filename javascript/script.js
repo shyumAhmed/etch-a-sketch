@@ -1,4 +1,5 @@
 const sketchBox = document.querySelector(".sketch-box");
+const clearButton = document.querySelector(".clear");
 
 function createGrid(numOfRows, numOfCells) {
   for (r = 0; r < numOfRows; r++) {
@@ -30,6 +31,15 @@ function draw() {
   });
 }
 
-createGrid(16, 16);
+function clearBoard() {
+  const cells = document.querySelectorAll(".cell");
+  clearButton.addEventListener("click", () => {
+    cells.forEach((cell) => {
+      cell.style.background = "antiquewhite";
+    });
+  });
+}
+
+createGrid(50, 50);
 draw();
-//(e.target.style.background = " antiquewhite")
+clearBoard();
