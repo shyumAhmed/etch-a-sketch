@@ -44,6 +44,10 @@ h1 {
   background-color: antiquewhite;
 }
 
+.no-border-cell {
+  background-color: antiquewhite;
+}
+
 .user-menu {
   border: 15px solid rgb(37, 37, 37);
   height: 80%;

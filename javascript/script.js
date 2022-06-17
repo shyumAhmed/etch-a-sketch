@@ -1,5 +1,6 @@
 const sketchBox = document.querySelector(".sketch-box");
 const clearButton = document.querySelector(".clear");
+const toggleGridButton = document.querySelector(".toggle-lines");
 let gridValue;
 
 function createGrid(numOfRows, numOfCells) {
@@ -49,6 +50,7 @@ function chooseGridValue() {
   createGrid(slider.value, slider.value);
   draw();
   clearBoard();
+  toggleGridLines();
 
   slider.oninput = () => {
     output.innerHTML = slider.value + " X " + slider.value;
@@ -64,7 +66,26 @@ function chooseGridValue() {
     createGrid(slider.value, slider.value);
     draw();
     clearBoard();
+    toggleGridLines();
   };
+}
+
+function toggleGridLines() {
+  const cells = document.querySelectorAll(".cell");
+  let toggle = false;
+  toggleGridButton.addEventListener("click", () => {
+    if (toggle) {
+      cells.forEach((cell) => {
+        cell.className = "cell";
+      });
+      toggle = false;
+    } else {
+      cells.forEach((cell) => {
+        cell.className = "no-border-cell";
+      });
+      toggle = true;
+    }
+  });
 }
 
 chooseGridValue();
