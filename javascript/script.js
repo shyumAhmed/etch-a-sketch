@@ -11,4 +11,4 @@ function createGrid(numOfRows, numOfCells) {
   }
 }
 
-createGrid(16, 16);
+createGrid(50, 50);

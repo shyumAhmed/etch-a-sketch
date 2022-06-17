@@ -1,14 +1,30 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: rgb(230, 237, 238);
+  font-family: Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .container {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
 }
 .sketch-box {
   display: flex;
   border: 15px solid rgb(231, 127, 127);
-  height: 350px;
-  width: 350px;
-  margin-right: 40px;
+  height: 70%;
+  width: 55%;
+  margin: 40px;
 }
 
 .grid-row {
@@ -19,4 +35,11 @@
 .cell {
   border: 1px solid gray;
   background-color: antiquewhite;
+}
+
+.user-menu {
+  border: 15px solid rgb(37, 37, 37);
+  height: 70%;
+  width: 20%;
+  margin: 50px;
 }
