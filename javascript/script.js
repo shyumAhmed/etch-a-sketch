@@ -47,13 +47,24 @@ function chooseGridValue() {
   const output = document.getElementById("value-num");
   output.innerHTML = slider.value + " X " + slider.value;
   createGrid(slider.value, slider.value);
-  slider.oninput = function () {
+  draw();
+  clearBoard();
+
+  slider.oninput = () => {
     output.innerHTML = slider.value + " X " + slider.value;
+    const cells = document.querySelectorAll(".cell");
+    const rows = document.querySelectorAll(".grid-row");
+    cells.forEach((cell) => {
+      cell.remove();
+    });
+    rows.forEach((cell) => {
+      cell.remove();
+    });
+
     createGrid(slider.value, slider.value);
+    draw();
+    clearBoard();
   };
 }
 
 chooseGridValue();
-//createGrid(x, x);
-draw();
-clearBoard();
