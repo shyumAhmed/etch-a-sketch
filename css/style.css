@@ -12,6 +12,13 @@ body {
   width: 100%;
 }
 
+h1 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: 50px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -22,8 +29,8 @@ body {
 .sketch-box {
   display: flex;
   border: 15px solid rgb(231, 127, 127);
-  height: 70%;
-  width: 55%;
+  height: 80%;
+  width: 40%;
   margin: 40px;
 }
 
@@ -39,7 +46,7 @@ body {
 
 .user-menu {
   border: 15px solid rgb(37, 37, 37);
-  height: 70%;
+  height: 80%;
   width: 20%;
   margin: 50px;
 }
