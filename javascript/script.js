@@ -2,8 +2,9 @@ const sketchBox = document.querySelector(".sketch-box");
 const clearButton = document.querySelector(".clear");
 const toggleGridButton = document.querySelector(".toggle-lines");
 const slider = document.getElementById("myRange");
-const output = document.getElementById("value-num");
-let gridValue;
+const sliderValueDisp = document.getElementById("value-num");
+const colorPicker = document.getElementById("colorpicker");
+let cellColor = "black";
 
 function createDefaultGrid(numOfRows, numOfCells) {
   console.log("being called");
@@ -23,11 +24,11 @@ function drawOnGrid() {
   cells.forEach((cell) => {
     cell.addEventListener("mousedown", (e) => {
       drag = true;
-      e.target.style.background = "black";
+      e.target.style.background = cellColor;
       console.log("mousedown");
     });
     cell.addEventListener("mouseover", (e) => {
-      drag ? (e.target.style.background = "black") : "";
+      drag ? (e.target.style.background = cellColor) : "";
     });
     cell.addEventListener("mouseup", () => {
       console.log("mouseup");
@@ -47,7 +48,7 @@ function clearBoard() {
 
 function updateGridCellNum() {
   slider.oninput = () => {
-    output.innerHTML = slider.value + " X " + slider.value;
+    sliderValueDisp.innerHTML = slider.value + " X " + slider.value;
     const cells = document.querySelectorAll(".cell");
     const rows = document.querySelectorAll(".grid-row");
     cells.forEach((cell) => {
@@ -61,15 +62,17 @@ function updateGridCellNum() {
     drawOnGrid();
     clearBoard();
     toggleGridLines();
+    changeCellColor();
   };
 }
 
 function createGrid() {
-  output.innerHTML = slider.value + " X " + slider.value;
+  sliderValueDisp.innerHTML = slider.value + " X " + slider.value;
   createDefaultGrid(slider.value, slider.value);
   drawOnGrid();
   clearBoard();
   toggleGridLines();
+  changeCellColor();
   updateGridCellNum();
 }
 
@@ -89,6 +92,12 @@ function toggleGridLines() {
       toggle = true;
     }
   });
+}
+
+function changeCellColor() {
+  colorPicker.oninput = () => {
+    cellColor = colorPicker.value;
+  };
 }
 
 createGrid();
