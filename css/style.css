@@ -61,6 +61,13 @@ h1 {
   border: none;
 }
 
+#myRange {
+  height: 3px;
+  border-radius: 2px;
+  top: 12px;
+  left: 0;
+}
+
 #colorpicker {
   min-height: 60px;
   min-width: 60px;
