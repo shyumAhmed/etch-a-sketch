@@ -12,7 +12,7 @@ let isRainbow = false;
 let isColor = true;
 let isShadow = false;
 let solidColor = "black";
-let shadePercentage = 10;
+let shadePercentage = 100;
 
 function createDefaultGrid(numOfRows, numOfCells) {
   for (r = 0; r < numOfRows; r++) {
@@ -37,14 +37,16 @@ function drawOnGrid() {
       drag = true;
       updateColor(e, drag);
       e.target.style.background = cellColor;
-      console.log("mousedown");
     });
-    cell.addEventListener("mouseover", (e) => {
+    cell.addEventListener("mouseenter", (e) => {
+      drag && shadePercentage > 0
+        ? (shadePercentage = shadePercentage - 10)
+        : "";
       updateColor(e, drag);
       drag ? (e.target.style.background = cellColor) : "";
     });
     cell.addEventListener("mouseup", () => {
-      console.log("mouseup");
+      shadePercentage = 100;
       drag = false;
     });
   });
@@ -59,7 +61,13 @@ function updateColor(e, drag) {
     };
     cellColor = solidColor;
   } else if (isShadow) {
-    drag ? (e.target.style.filter = "brightness(30%)") : "";
+    colorPicker.oninput = () => {
+      solidColor = colorPicker.value;
+    };
+    cellColor = solidColor;
+    drag
+      ? (e.target.style.filter = "brightness(" + shadePercentage + "%)")
+      : "";
   }
 }
 
@@ -84,26 +92,13 @@ function updateGridCellNum() {
     rows.forEach((cell) => {
       cell.remove();
     });
-
-    createDefaultGrid(slider.value, slider.value);
-    drawOnGrid();
-    clearBoard();
-    toggleGridLines();
-    changeCellColor();
-    changeToRandomColor();
-    changeCellShading();
+    configureGrid();
   };
 }
 
 function createGrid() {
   sliderValueDisp.innerHTML = slider.value + " X " + slider.value;
-  createDefaultGrid(slider.value, slider.value);
-  drawOnGrid();
-  clearBoard();
-  toggleGridLines();
-  changeCellColor();
-  changeToRandomColor();
-  changeCellShading();
+  configureGrid();
   updateGridCellNum();
 }
 
@@ -130,7 +125,6 @@ function changeCellColor() {
     isColor = true;
     isRainbow = false;
     isShadow = false;
-    console.log("sssss");
   });
 }
 
@@ -150,6 +144,14 @@ function changeToRandomColor() {
   });
 }
 
-function configureGrid() {}
+function configureGrid() {
+  createDefaultGrid(slider.value, slider.value);
+  drawOnGrid();
+  clearBoard();
+  toggleGridLines();
+  changeCellColor();
+  changeToRandomColor();
+  changeCellShading();
+}
 
 createGrid();
