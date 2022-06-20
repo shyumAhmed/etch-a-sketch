@@ -29,7 +29,7 @@ h1 {
 
 .sketch-box {
   display: flex;
-  border: 15px solid rgb(231, 127, 127);
+  border: 15px solid rgb(95, 93, 93);
   height: 80%;
   width: 40%;
   margin: 40px;
@@ -42,20 +42,46 @@ h1 {
 }
 .cell {
   border: 1px solid gray;
-  background-color: antiquewhite;
+  background-color: rgb(240, 247, 247);
 }
 
 .no-border-cell {
-  background-color: antiquewhite;
+  background-color: rgb(240, 247, 247);
 }
 
 .user-menu {
   display: flex;
+  gap: 15px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 15px solid rgb(37, 37, 37);
-  height: 80%;
-  width: 20%;
+  justify-content: space-evenly;
+  max-height: 80%;
+  max-width: 20%;
   margin: 50px;
+  border: none;
+}
+
+#colorpicker {
+  min-height: 60px;
+  min-width: 60px;
+  border: none;
+}
+
+button {
+  min-height: 35px;
+  min-width: 160px;
+  background-color: #d3d3d3;
+  border-color: #d3d3d3;
+}
+
+button:hover {
+  background-color: #9e9898be;
+}
+
+button,
+label,
+p {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: 15px;
 }

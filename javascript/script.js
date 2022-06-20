@@ -75,7 +75,7 @@ function clearBoard() {
   const cells = document.querySelectorAll(".cell");
   clearButton.addEventListener("click", () => {
     cells.forEach((cell) => {
-      cell.style.background = "antiquewhite";
+      cell.style.background = "rgb(240, 247, 247)";
       cell.style.filter = "brightness(100%)";
     });
   });
